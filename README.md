@@ -9,108 +9,67 @@ Make directory for your Neovim config
 
 `mkdir ~/.config/nvim`
 
-Create an `init.vim` file
+Create an `init.lua` file
 
-`touch ~/.config/nvim/init.vim`
-
-### Install vim-plug
-`curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
-
-You should now have plug.vim in your autoload directory so it will load of on start
-
-### Add a new file for plugins
-We will manage our plugins in a separate file.
-
-`mkdir ~/.config/nvim/vim-plug`
-
-`touch ~/.config/nvim/vim-plug/plugins.vim`
-
-### Add some basic plugins
-Add the following to `~/.config/nvim/vim-plug/plugins.vim`
-```
-" auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  "autocmd VimEnter * PlugInstall
-  "autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
-call plug#begin('~/.config/nvim/autoload/plugged')
-
-    " Better Syntax Support
-    Plug 'sheerun/vim-polyglot'
-    " File Explorer
-    Plug 'scrooloose/NERDTree'
-    " Auto pairs for '(' '[' '{'
-    Plug 'jiangmiao/auto-pairs'
-
-call plug#end()
-```
-
-### Source your plugins
-Add the following line to `~/.config/nvim/init.vim`
-
-`source $HOME/.config/nvim/vim-plug/plugins.vim`
+`touch ~/.config/nvim/init.lua`
 
 ### General Editor Settings
-To include some basics in your config first create a directory called general and a file called `settings.vim`
+Inside `~/.config/nvim` create directory `lua/user`. In `user` directory create `options.lua`
 
-`mkdir ~/.config/nvim/general`
-
-`touch ~/.config/nvim/general/settings.vim`
-
-Add the following to `settings.vim`
+Paste the following options in `options.lua`
 ```
-" set leader key
-let g:mapleader = "\<Space>"
+-- :help options
+vim.opt.backup = false                          -- creates a backup file
+vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
+vim.opt.cmdheight = 2                           -- more space in the neovim command line for displaying messages
+vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
+vim.opt.conceallevel = 0                        -- so that `` is visible in markdown files
+vim.opt.fileencoding = "utf-8"                  -- the encoding written to a file
+vim.opt.hlsearch = true                         -- highlight all matches on previous search pattern
+vim.opt.ignorecase = true                       -- ignore case in search patterns
+vim.opt.mouse = "a"                             -- allow the mouse to be used in neovim
+vim.opt.pumheight = 10                          -- pop up menu height
+vim.opt.showmode = true                         -- To see mode like -- INSERT -- and -- VISUAL --
+vim.opt.showtabline = 2                         -- always show tabs
+vim.opt.smartcase = true                        -- smart case
+vim.opt.smartindent = true                      -- make indenting smarter again
+vim.opt.splitbelow = true                       -- force all horizontal splits to go below current window
+vim.opt.splitright = true                       -- force all vertical splits to go to the right of current window
+vim.opt.swapfile = false                        -- creates a swapfile
+-- vim.opt.termguicolors = true                 -- set term gui colors (most terminals support this)
+vim.opt.timeoutlen = 1000                       -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.undofile = true                         -- enable persistent undo
+vim.opt.updatetime = 300                        -- faster completion (4000ms default)
+vim.opt.writebackup = false                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+vim.opt.expandtab = true                        -- convert tabs to spaces
+vim.opt.shiftwidth = 2                          -- the number of spaces inserted for each indentation
+vim.opt.tabstop = 2                             -- insert 2 spaces for a tab
+vim.opt.cursorline = false                      -- highlight the current line
+vim.opt.number = true                           -- set numbered lines
+vim.opt.relativenumber = false                  -- set relative numbered lines
+vim.opt.numberwidth = 4                         -- set number column width to 2 {default 4}
+vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
+vim.opt.wrap = false                            -- display lines as one long line
+vim.opt.scrolloff = 8                           -- is one of my fav
+vim.opt.sidescrolloff = 8
+vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
 
-syntax enable                           " Enables syntax highlighing
-set hidden                              " Required to keep multiple buffers open multiple buffers
-set nowrap                              " Display long lines as just one line
-set encoding=utf-8                      " The encoding displayed
-set pumheight=10                        " Makes popup menu smaller
-set fileencoding=utf-8                  " The encoding written to file
-set ruler                                      " Show the cursor position all the time
-set cmdheight=2                         " More space for displaying messages
-set iskeyword+=-                          " treat dash separated words as a word text object"
-set mouse=a                             " Enable your mouse
-set splitbelow                          " Horizontal splits will automatically be below
-set splitright                          " Vertical splits will automatically be to the right
-set t_Co=256                            " Support 256 colors
-set conceallevel=0                      " So that I can see `` in markdown files
-set tabstop=2                           " Insert 2 spaces for a tab
-set shiftwidth=2                        " Change the number of space characters inserted for indentation
-set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
-set expandtab                           " Converts tabs to spaces
-set smartindent                         " Makes indenting smart
-set autoindent                          " Good auto indent
-set laststatus=0                        " Always display the status line
-set number                              " Line numbers
-"set cursorline                          " Enable highlighting of the current line
-set background=dark                     " tell vim what the background color looks like
-set showtabline=2                       " Always show tabs
-"set noshowmode                          " We don't need to see things like -- INSERT -- anymore
-set nobackup                            " This is recommended by coc
-set nowritebackup                       " This is recommended by coc
-set updatetime=300                      " Faster completion
-set timeoutlen=500                      " By default timeoutlen is 1000 ms
-set formatoptions-=cro                  " Stop newline continution of comments
-set clipboard=unnamedplus               " Copy paste between vim and everything else
-"set autochdir                           " Your working directory will always be the same as your working directory
+vim.opt.shortmess:append "c"
 
-au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
-
-" You can't stop me
-cmap w!! w !sudo tee %
+vim.cmd "set whichwrap+=<,>,[,],h,l"
+vim.cmd [[set iskeyword+=-]]
+vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 ```
 
-Source the editor settings in `init.vim`
+### Source the options file
+Add the following line to `~/.config/nvim/init.lua`
 
-`source $HOME/.config/nvim/general/settings.vim`
+```
+require "user.options"
+```
 
 ### References
-- vim-plug : https://github.com/junegunn/vim-plug
+- chris@machine: https://github.com/LunarVim/Neovim-from-scratch
 
 
 # Vim Long and Prosper
