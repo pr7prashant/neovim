@@ -222,6 +222,35 @@ Add the following line to `~/.config/nvim/init.lua`
 require "user.plugins"
 ```
 
+### Add Colorscheme
+Add the colorscheme plugins in `~/.config/nvim/lua/user/plugins.lua`
+```
+-- Colorschemes
+-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+use "lunarvim/darkplus.nvim"
+```
+
+Inside `~/.config/nvim/lua/user` directory create file `colorscheme.lua`
+
+Paste the following code in `colorscheme.lua`
+```
+vim.cmd [[
+try
+  colorscheme darkplus
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme default
+  set background=dark
+endtry
+]]
+```
+
+### Source the colorscheme file
+Add the following line to `~/.config/nvim/init.lua`
+
+```
+require "user.colorscheme"
+```
+
 ### References
 - chris@machine: https://github.com/LunarVim/Neovim-from-scratch
 
