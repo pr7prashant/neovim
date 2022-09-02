@@ -28,6 +28,9 @@ gitsigns.setup {
       vim.keymap.set(mode, l, r, opts)
     end
 
+    -- Change current_line_blame text color
+    vim.cmd[[highlight GitSignsCurrentLineBlame guifg=Grey]]
+
     -- Navigation
     map('n', ']c', function()
       if vim.wo.diff then return ']c' end
