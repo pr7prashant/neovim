@@ -144,11 +144,13 @@ You can install new plugins here: [plugins](https://github.com/LunarVim/nvim-bas
 - [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
 - [vim-illuminate](https://github.com/RRethy/vim-illuminate)
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 - [nvim-dap](https://github.com/mfussenegger/nvim-dap)
 - [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
 - [DAPInstall.nvim](https://github.com/ravenxrz/DAPInstall.nvim)
+- [vim-doge](https://github.com/kkoomen/vim-doge)
  
 
 # Referrences
