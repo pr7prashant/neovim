@@ -18,7 +18,7 @@ null_ls.setup({
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
 		formatting.google_java_format,
-		diagnostics.eslint,
+		diagnostics.eslint.with({ extra_args = { "--quiet" } }),
 		diagnostics.flake8,
 	},
 	-- you can reuse a shared lspconfig on_attach callback here
