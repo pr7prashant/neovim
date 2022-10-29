@@ -61,6 +61,7 @@ return packer.startup(function(use)
 		commit = "0b6648eb35572e2e2fb163481e81d3dfdd48e9a7",
 		run = ":call doge#install()",
 	})
+	use({ "folke/which-key.nvim", commit = "61553aeb3d5ca8c11eea8be6eadf478062982ac9" })
 
 	-- Colorschemes
 	use({ "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" })
