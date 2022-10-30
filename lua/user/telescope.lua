@@ -5,6 +5,7 @@ end
 
 local actions = require("telescope.actions")
 
+-- telescope.load_extension("fzf")
 require("telescope").load_extension("fzf")
 
 telescope.setup({
