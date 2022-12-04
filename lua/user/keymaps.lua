@@ -16,6 +16,14 @@ vim.g.mapleader = " "
 --   command_mode = "c",
 
 -- Normal --
+-- Center cursor during vertical navigation
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "<C-d>", "<C-d>zz", opts)
+
+-- Center cursor during search navigation
+keymap("n", "n", "nzz", opts)
+keymap("n", "N", "Nzz", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
