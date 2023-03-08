@@ -37,12 +37,6 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
-  callback = function()
-    vim.cmd "quit"
-  end,
-})
-
 -- Highlight Yanked Text
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
