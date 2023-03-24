@@ -73,3 +73,9 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
   command = "if mode() != 'c' | checktime | endif",
   pattern = { "*" },
 })
+
+-- Make neovim background transparent
+vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
+vim.cmd [[hi NvimTreeNormal guibg=NONE ctermbg=NONE]]
+vim.cmd [[hi NvimTreeNormalFloat guibg=NONE ctermbg=NONE]]
