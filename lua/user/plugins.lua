@@ -91,7 +91,16 @@ return packer.startup(function(use)
   use { "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" }
 
   -- Telescope
-  use { "nvim-telescope/telescope.nvim", commit = "76ea9a898d3307244dce3573392dcf2cc38f340f" }
+  use {
+    "nvim-telescope/telescope.nvim",
+    commit = "942fe5faef47b21241e970551eba407bc10d9547",
+    requires = {
+      { "nvim-telescope/telescope-live-grep-args.nvim", commit = "cf7994277c89e0a367e90f3ad054c983e2dfc22c" },
+    },
+    config = function()
+      require("telescope").load_extension "live_grep_args"
+    end,
+  }
   use {
     "nvim-telescope/telescope-fzf-native.nvim",
     commit = "65c0ee3d4bb9cb696e262bca1ea5e9af3938fc90",
