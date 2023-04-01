@@ -199,6 +199,7 @@ You can install new plugins here: [plugins](https://github.com/pr7prashant/neovi
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - `telescope.nvim` is a highly extendable fuzzy finder over lists.
 - [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - `fzf-native` is a c port of `fzf` to support `fzf` syntax in `Telescope`.
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Uses `tree-sitter` interface in Neovim to provide syntax highlighting.
+- [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context) - A plugin that shows the context of the currently visible buffer contents.
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Super fast git decorations implemented purely in lua/teal.
 - [nvim-dap](https://github.com/mfussenegger/nvim-dap) - `nvim-dap` is a Debug Adapter Protocol client implementation for Neovim.
 - [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) - A UI for `nvim-dap` which provides a good out of the box configuration.
