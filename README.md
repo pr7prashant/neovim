@@ -186,6 +186,7 @@ You can install new plugins here: [plugins](https://github.com/pr7prashant/neovi
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion engine plugin for neovim written in Lua.
 - [cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - `nvim-cmp` source for buffer words.
 - [cmp-path](https://github.com/hrsh7th/cmp-path) - `nvim-cmp` source for filesystem paths.
+- [cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline) - `nvim-cmp` source for vim's cmdline.
 - [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) - `luasnip` completion source for `nvim-cmp`.
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - `nvim-cmp` source for neovim's built-in language server client.
 - [cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua) - `nvim-cmp` source for neovim Lua API.
