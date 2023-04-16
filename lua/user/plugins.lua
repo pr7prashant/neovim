@@ -95,12 +95,6 @@ return packer.startup(function(use)
   use {
     "nvim-telescope/telescope.nvim",
     commit = "942fe5faef47b21241e970551eba407bc10d9547",
-    requires = {
-      { "nvim-telescope/telescope-live-grep-args.nvim", commit = "cf7994277c89e0a367e90f3ad054c983e2dfc22c" },
-    },
-    config = function()
-      require("telescope").load_extension "live_grep_args"
-    end,
   }
   use {
     "nvim-telescope/telescope-fzf-native.nvim",

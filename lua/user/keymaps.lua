@@ -85,7 +85,6 @@ keymap("n", "<C-o>", ":Telescope fd cwd=/home/prashant/Git")
 keymap("n", "<leader>f", ":Telescope current_buffer_fuzzy_find<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fo", ":Telescope live_grep cwd=/home/prashant/Git", opts)
--- keymap("n", "<leader>ft", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
