@@ -1,6 +1,6 @@
 # A Basic Stable IDE config for Neovim
 
-This repo is my personal neovim config. The neovim and plugins are pinned to a versions to avoid breaking changes. In this repo I will try to tag configs as newer version of neovim releases.
+This repo is my personal neovim config. The neovim and plugins are pinned to a versions to avoid breaking changes. In this repo I will try to tag configs as newer version of neovim releases. The latest config that I use corresponds to the `master` branch and the previous configs have a release tag (neovim version) associated with them.
 
 ## Install Neovim 0.8
 
