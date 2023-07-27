@@ -18,6 +18,6 @@ null_ls.setup {
     formatting.google_java_format,
     formatting.rustfmt,
     diagnostics.flake8,
-    diagnostics.eslint.with { extra_args = { "--quiet" } },
+    diagnostics.eslint_d.with { extra_args = { "--quiet" } },
   },
 }
