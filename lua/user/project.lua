@@ -1,19 +1,28 @@
-local status_ok, project = pcall(require, "project_nvim")
-if not status_ok then
-  return
-end
-project.setup {
-
-  -- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
-  detection_methods = { "pattern" },
-
-  -- patterns used to detect root dir, when **"pattern"** is in detection_methods
-  patterns = { ".git", "Makefile" },
+local M = {
+  "ahmedkhalf/project.nvim",
+  commit = "685bc8e3890d2feb07ccf919522c97f7d33b94e4",
+  dependencies = {
+    {
+      "nvim-telescope/telescope.nvim",
+      event = "Bufenter",
+      cmd = { "Telescope" },
+    },
+  },
 }
 
-local tele_status_ok, telescope = pcall(require, "telescope")
-if not tele_status_ok then
-  return
+function M.config()
+  local project = require "project_nvim"
+  project.setup {
+
+    -- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
+    detection_methods = { "pattern" },
+
+    -- patterns used to detect root dir, when **"pattern"** is in detection_methods
+    patterns = { ".git", "Makefile" },
+  }
+
+  local telescope = require "telescope"
+  telescope.load_extension "projects"
 end
 
-telescope.load_extension "projects"
+return M

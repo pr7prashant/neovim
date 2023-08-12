@@ -1,9 +1,17 @@
-local status_ok, comment = pcall(require, "Comment")
-if not status_ok then
-  return
-end
+local M = {
+  "numToStr/Comment.nvim",
+  commit = "eab2c83a0207369900e92783f56990808082eac2",
+  event = { "BufRead", "BufNewFile" },
+  dependencies = {
+    {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      event = "VeryLazy",
+      commit = "729d83ecb990dc2b30272833c213cc6d49ed5214",
+    },
+  },
+}
 
-comment.setup {
+function M.config()
   pre_hook = function(ctx)
     -- Only calculate commentstring for tsx filetypes
     if vim.bo.filetype == "typescriptreact" then
@@ -25,5 +33,7 @@ comment.setup {
         location = location,
       }
     end
-  end,
-}
+  end
+end
+
+return M
