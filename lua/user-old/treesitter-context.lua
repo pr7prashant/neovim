@@ -2,6 +2,7 @@ local M = {
   "nvim-treesitter/nvim-treesitter-context",
   event = "BufReadPost",
   dependencies = { "nvim-treesitter/nvim-treesitter" },
+  commit = "8aa32aa6b84dda357849dbc0f775e69f2e04c041",
 }
 
 function M.config()

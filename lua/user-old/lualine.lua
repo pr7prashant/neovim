@@ -1,5 +1,6 @@
 local M = {
   "nvim-lualine/lualine.nvim",
+  commit = "0050b308552e45f7128f399886c86afefc3eb988",
   event = { "VimEnter", "InsertEnter", "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
 }
 
