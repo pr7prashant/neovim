@@ -7,7 +7,7 @@ This repo is my personal neovim config. The neovim and plugins are pinned to a v
 Now this config uses `lazy.nvim` as a plugin manager, so if you are migrating from packer you should probably remove
 `$HOME/.local/share/nvim` and re-open nvim to re-install the plugins to not face any issues.
 
-## Install Neovim 0.9
+## Install Neovim 0.10
 
 You can install Neovim with your package manager e.g. brew, apt, pacman etc.. but remember that when you update your packages Neovim may be upgraded to a newer version.
 
@@ -18,7 +18,7 @@ If you would like to make sure Neovim only updates when you want it to than I re
 ```sh
 git clone https://github.com/neovim/neovim.git
 cd neovim
-git checkout release-0.9
+git checkout release-0.10
 make CMAKE_BUILD_TYPE=Release
 sudo make install
 ```
