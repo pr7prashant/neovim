@@ -1,11 +1,10 @@
 # A Basic Stable IDE config for Neovim
 
-This repo is my personal neovim config. The neovim and plugins are pinned to a versions to avoid breaking changes. In this repo I will try to tag configs as newer version of neovim releases. The latest config that I use corresponds to the `master` branch and the previous configs have a release tag (neovim version) associated with them.
+This repo is my personal neovim config. The latest config that I use corresponds to the latest version of the plugins and the previous configs have a release tag (neovim version) associated with them.
 
 ### Migration guide to lazy from packer
 
-Now this config uses `lazy.nvim` as a plugin manager, so if you are migrating from packer you should probably remove
-`$HOME/.local/share/nvim` and re-open nvim to re-install the plugins to not face any issues.
+Now this config uses `lazy.nvim` as a plugin manager, so if you are migrating from packer you should probably remove `$HOME/.local/share/nvim` and re-open nvim to re-install the plugins to not face any issues.
 
 ## Install Neovim 0.10
 
@@ -132,40 +131,17 @@ First Enter:
 
 and press `i` on the Language Server you wish to install
 
-Next you will need to add the server to this list: [servers](https://github.com/pr7prashant/neovim/blob/master/lua/utils/init.lua)
-
-Note: Builtin LSP doesn't contain all lsps from [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#terraform_lsp).
-
-If you want to install any from there, for example terraform_lsp(which adds more functionality than terraformls, like complete resource listing),
-
-1. You can add the lsp name in [mason lsp block](https://github.com/pr7prashant/neovim/blob/master/lua/user/mason.lua)
-
-```lua
--- lua/utils/init.lua
-M.servers = {
-  "lua_ls",
-  "cssls",
-  "html",
-  "tsserver",
-  "pyright",
-  "bashls",
-  "jsonls",
-  "yamlls",
-  "terraform_lsp" -- New LSP
-}
-```
-
-2. Manually install the binary of the lsp and put it in your path by downloading the binary or through your package manager. For terraform_lsp [example](https://github.com/juliosueiras/terraform-lsp/releases)
+Next you will need to add the server to the server list: [servers](https://github.com/pr7prashant/neovim/blob/master/lua/plugins/lspconfig.lua)
 
 ### Formatters and linters
 
-Make sure the formatter or linter is installed and add it to this setup function: [null-ls](https://github.com/pr7prashant/neovim/blob/master/lua/user/null-ls.lua)
+Make sure the formatter or linter is installed and add it to this setup function: [conform](https://github.com/pr7prashant/neovim/blob/master/lua/plugins/conform.lua)
 
 **NOTE** Some are already setup as examples, remove them if you want
 
 ### Plugins
 
-You can install new plugins here: [plugins](https://github.com/pr7prashant/neovim/blob/master/lua/user/)
+You can install new plugins here: [plugins](https://github.com/pr7prashant/neovim/blob/master/lua/plugins/)
 
 Here is the wiki for installing new plugins refer to this: [wiki](https://github.com/pr7prashant/neovim/wiki/Adding-a-new-plugin-with-lazy.nvim-as-plugin-manager)
 
@@ -173,49 +149,33 @@ Here is the wiki for installing new plugins refer to this: [wiki](https://github
 
 ## Plugins
 
-- [alpha-nvim](https://github.com/goolord/alpha-nvim) - `alpha` is a fast and fully programmable greeter for neovim.
-- [bufdelete.nvim](https://github.com/famiu/bufdelete.nvim)
-- [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) - A snazzy 💅 buffer line (with tabpage integration) for Neovim built using lua.
-- [cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - `nvim-cmp` source for buffer words.
-- [cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline) - `nvim-cmp` source for vim's cmdline.
-- [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) - `luasnip` completion source for `nvim-cmp`.
-- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - `nvim-cmp` source for neovim's built-in language server client.
-- [cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua) - `nvim-cmp` source for neovim Lua API.
-- [cmp-path](https://github.com/hrsh7th/cmp-path) - `nvim-cmp` source for filesystem paths.
 - [Comment.nvim](https://github.com/numToStr/Comment.nvim) - Smart and Powerful commenting plugin for Neovim.
-- [DAPInstall.nvim](https://github.com/ravenxrz/DAPInstall.nvim) - A NeoVim plugin for managing several debuggers for `nvim-dap`.
-- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) - Snippets collection for a set of different programming languages for faster development.
+- [conform.nvim](https://github.com/stevearc/conform.nvim) - Lightweight yet powerful formatter plugin for Neovim.
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Super fast git decorations implemented purely in lua/teal.
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) - This plugin adds indentation guides to all lines (including empty lines).
 - [lazy](https://github.com/folke/lazy.nvim) - lazy.nvim is a modern plugin manager for Neovim.
-- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - A blazing fast and easy to configure Neovim statusline written in Lua.
-- [LuaSnip](https://github.com/L3MON4D3/LuaSnip) - A plugin to setup snippets.
-- [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - `mason-lspconfig` bridges `mason.nvim` with the `lspconfig` plugin - making it easier to use both plugins together.
-- [mason.nvim](https://github.com/williamboman/mason.nvim) - Portable package manager for Neovim that runs everywhere Neovim runs.
-- [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim) - Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
+- [mini.nvim](https://github.com/echasnovski/mini.nvim) - Library of 40+ independent Lua modules improving overall Neovim experience with minimal effort.
+- [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) - A Neovim plugin to browse the file system and other tree like structures in whatever style suits you.
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs) - A super powerful autopair plugin for Neovim that supports multiple characters.
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion engine plugin for neovim written in Lua.
-- [nvim-dap](https://github.com/mfussenegger/nvim-dap) - `nvim-dap` is a Debug Adapter Protocol client implementation for Neovim.
-- [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) - A UI for `nvim-dap` which provides a good out of the box configuration.
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - Configs for the Nvim LSP client.
-- [nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring) - A Neovim plugin for setting the commentstring option based on the cursor location in the file.
 - [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) - A File Explorer For Neovim Written In Lua.
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Uses `tree-sitter` interface in Neovim to provide syntax highlighting.
 - [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context) - A plugin that shows the context of the currently visible buffer contents.
-- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) - A lua fork of vim-devicons. This plugin provides the same icons as well as colors for each icon.
-- [plenary](https://github.com/nvim-lua/plenary.nvim) - All the lua functions I don't want to write twice.
-- [project.nvim](https://github.com/ahmedkhalf/project.nvim) - An all in one neovim plugin written in lua that provides superior project management.
-- [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - `fzf-native` is a c port of `fzf` to support `fzf` syntax in `Telescope`.
+- [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) - The goal of nvim-ufo is to make Neovim's fold look modern and keep high performance.
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - `telescope.nvim` is a highly extendable fuzzy finder over lists.
+- [todo-comments.nvim](https://github.com/folke/todo-comments.nvim) - A lua plugin to highlight and search for todo comments like TODO, HACK, BUG in your code base.
 - [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) - A neovim plugin to persist and toggle multiple terminals during an editing session.
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) - A dark and light Neovim theme written in Lua ported from the Visual Studio Code TokyoNight theme.
-- [vim-illuminate](https://github.com/RRethy/vim-illuminate) - Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+- [vim-sleuth](https://github.com/tpope/vim-sleuth) - Automatically adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file.
+- [vim-visual-multi](https://github.com/mg979/vim-visual-multi) - Multiple cursor plugin for Vim/Neovim.
 - [which-key](https://github.com/folke/which-key.nvim) - A lua plugin that displays a popup with possible key bindings of the command you started typing.
 
 ---
 
 ## Referrences
 
+- kickstart.nvim : https://github.com/nvim-lua/kickstart.nvim
 - chris@machine : https://github.com/LunarVim/nvim-basic-ide
 
 > The computing scientist's main challenge is not to get confused by the complexities of his own making.
