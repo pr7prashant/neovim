@@ -46,6 +46,12 @@ vim.keymap.set('n', '<S-l>', ':bnext<CR>')
 -- Close buffers
 vim.keymap.set('n', '<leader>bd', '<cmd>:bdelete<CR>', { desc = 'Delete Buffer' })
 
+-- Better paste
+vim.keymap.set('v', 'p', '"_dP')
+
+-- Retain yanked value in register
+vim.keymap.set('v', 'p', '"_dP')
+
 -- Stay in indent mode
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
