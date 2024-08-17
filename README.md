@@ -152,6 +152,7 @@ Here is the wiki for installing new plugins refer to this: [wiki](https://github
 - [Comment.nvim](https://github.com/numToStr/Comment.nvim) - Smart and Powerful commenting plugin for Neovim.
 - [conform.nvim](https://github.com/stevearc/conform.nvim) - Lightweight yet powerful formatter plugin for Neovim.
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Super fast git decorations implemented purely in lua/teal.
+- [grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim) - Find and Replace plugin for neovim.
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) - This plugin adds indentation guides to all lines (including empty lines).
 - [lazy](https://github.com/folke/lazy.nvim) - lazy.nvim is a modern plugin manager for Neovim.
 - [mini.nvim](https://github.com/echasnovski/mini.nvim) - Library of 40+ independent Lua modules improving overall Neovim experience with minimal effort.
