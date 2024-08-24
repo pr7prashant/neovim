@@ -7,8 +7,8 @@ vim.keymap.set('i', 'jk', '<Esc>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous Diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next Diagnostic message' })
-vim.keymap.set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show Diagnostic Error messages' })
-vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open Diagnostic Quickfix list' })
+vim.keymap.set('n', '<leader>De', vim.diagnostic.open_float, { desc = 'Show Diagnostic Error messages' })
+vim.keymap.set('n', '<leader>Dq', vim.diagnostic.setloclist, { desc = 'Open Diagnostic Quickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
