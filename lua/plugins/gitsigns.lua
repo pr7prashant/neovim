@@ -84,13 +84,13 @@ M.config = function()
         gitsigns.blame_line { full = true }
       end, { desc = 'Blame Line' })
       map('n', '<leader>gtb', gitsigns.toggle_current_line_blame, { desc = 'Toggle Current Line Blame' })
-      map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = 'Git Toggle Current Line Blame' })
+      map('n', '<leader>Tb', gitsigns.toggle_current_line_blame, { desc = 'Git Toggle Current Line Blame' })
       map('n', '<leader>hd', gitsigns.diffthis, { desc = 'Diff This' })
       map('n', '<leader>hD', function()
         gitsigns.diffthis '~'
       end, { desc = 'Diff This ~' })
       map('n', '<leader>gtd', gitsigns.toggle_deleted, { desc = 'Toggle Deleted' })
-      map('n', '<leader>td', gitsigns.toggle_deleted, { desc = 'Git Toggle Deleted' })
+      map('n', '<leader>Td', gitsigns.toggle_deleted, { desc = 'Git Toggle Deleted' })
 
       -- Text object
       map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select Hunk' })
