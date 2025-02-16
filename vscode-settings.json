@@ -1,0 +1,53 @@
+{
+  "window.zoomLevel": -1,
+  "editor.formatOnSave": true,
+  "vscode-neovim.useWSL": true,
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "remote.extensionKind": {
+    "asvetliakov.vscode-neovim": ["workspace"]
+  },
+  "vscode-neovim.compositeKeys": {
+    "jk": {
+      "command": "vscode-neovim.escape"
+    }
+  },
+  "todohighlight.isCaseSensitive": false,
+  "todohighlight.keywords": [
+    {
+      "text": "NOTE:",
+      "color": "white",
+      "border": "1px solid #FF6F00",
+      "borderRadius": "2px", //NOTE: using borderRadius along with `border` or you will see nothing change
+      "backgroundColor": "#FF6F00"
+    },
+    {
+      "text": "TODO:",
+      "color": "white",
+      "border": "1px solid red",
+      "borderRadius": "2px", //NOTE: using borderRadius along with `border` or you will see nothing change
+      "backgroundColor": "red"
+    },
+    {
+      "text": "DEBUG:",
+      "color": "white",
+      "border": "1px solid #0D47A1",
+      "borderRadius": "2px", //NOTE: using borderRadius along with `border` or you will see nothing change
+      "backgroundColor": "#0D47A1"
+    },
+    {
+      "text": "REVIEW:",
+      "color": "white",
+      "border": "1px solid #FF6F00",
+      "borderRadius": "2px", //NOTE: using borderRadius along with `border` or you will see nothing change
+      "backgroundColor": "#FF6F00"
+    }
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.lineNumbers": "relative"
+}
+
