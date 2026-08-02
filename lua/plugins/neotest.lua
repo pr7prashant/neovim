@@ -9,23 +9,36 @@ local M = {
   },
 
   config = function()
+    -- neotest parses test positions in a `-u NONE` child process, which has no
+    -- access to nvim-treesitter's filetype->language registrations. That makes
+    -- it fail on `.tsx`/`.jsx` files with `No parser for language
+    -- `typescriptreact` (the filetype never gets mapped to the `tsx` parser).
+    -- Disabling the subprocess makes parsing happen in-process, where the
+    -- mapping exists. neotest treats in-process parsing as a supported fallback.
+    pcall(function()
+      require('neotest.lib').subprocess.enabled = function()
+        return false
+      end
+    end)
+
     require('neotest').setup {
       adapters = {
         require 'neotest-jest' {
-          jestCommand = 'npm test --',
-          jestConfigFile = function(file)
-            if string.find(file, '/packages/') and string.match(file, '(.-/[^/]+/)src') then
-              return string.match(file, '(.-/[^/]+/)src') .. 'jest.config.ts'
-            end
-
-            return vim.fn.getcwd() .. '/jest.config.ts'
-          end,
-          env = { CI = true },
+          -- NOTE: We intentionally do NOT set `jestCommand`. neotest-jest then
+          -- auto-detects the local `node_modules/.bin/jest` and runs it directly.
+          -- Routing through `npm test` breaks it, because project test scripts
+          -- often wrap jest with extra flags (e.g. `jest --coverage && tsc
+          -- --noEmit`) - neotest's own args (--config/--json/--testNamePattern)
+          -- get appended after that chain and never reach jest.
+          --
+          -- `jestConfigFile` is likewise left to the default, which walks up to
+          -- the nearest jest.config.{js,ts} (works for both a repo root and a
+          -- package inside a monorepo).
+          env = { CI = true, NODE_ENV = 'test', TZ = 'UTC' },
+          -- Run from the nearest package.json directory so jest's `<rootDir>`
+          -- (and moduleMapper, setup files etc.) resolve correctly.
           cwd = function(file)
-            if string.find(file, '/packages/') then
-              return string.match(file, '(.-/[^/]+/)src')
-            end
-            return vim.fn.getcwd()
+            return require('neotest.lib').files.match_root_pattern 'package.json'(file) or vim.fn.getcwd()
           end,
         },
       },

@@ -10,7 +10,7 @@ function M.config()
   end
 
   toggleterm.setup {
-    size = 20,
+    size = 80,
     open_mapping = [[<c-\>]],
     hide_numbers = true,
     shade_terminals = true,
@@ -18,13 +18,20 @@ function M.config()
     start_in_insert = true,
     insert_mappings = true,
     persist_size = true,
-    direction = 'horizontal',
+    direction = 'vertical',
     close_on_exit = true,
     shell = vim.o.shell,
     float_opts = {
       border = 'curved',
     },
+    on_open = function(term)
+      if term.direction ~= 'float' then
+        vim.wo[term.window].winhighlight = 'WinSeparator:ToggleTermSeparator'
+      end
+    end,
   }
+
+  vim.api.nvim_set_hl(0, 'ToggleTermSeparator', { link = 'Title' })
 
   function _G.set_terminal_keymaps()
     local opts = { noremap = true }

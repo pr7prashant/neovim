@@ -51,7 +51,7 @@ M.config = function()
       end
 
       -- Navigation
-      map('n', ']c', function()
+      map('n', ']h', function()
         if vim.wo.diff then
           vim.cmd.normal { ']c', bang = true }
         else
@@ -59,7 +59,7 @@ M.config = function()
         end
       end, { desc = 'Next Hunk' })
 
-      map('n', '[c', function()
+      map('n', '[h', function()
         if vim.wo.diff then
           vim.cmd.normal { '[c', bang = true }
         else
