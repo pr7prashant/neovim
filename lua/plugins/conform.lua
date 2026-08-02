@@ -16,11 +16,24 @@ local M = {
     notify_on_error = false,
     format_on_save = function(bufnr)
       -- Disable "format_on_save lsp_fallback" for languages that don't
-      -- have a well standardized coding style. You can add additional
-      -- languages here or re-enable it for the disabled ones.
-      local disable_filetypes = { c = true, cpp = true }
+      -- have a well standardized coding style, AND for filetypes that
+      -- already have a dedicated formatter below (prettierd/prettier).
+      -- Without this, a slow/failed prettierd silently falls back to
+      -- the attached LSP's own formatter (e.g. ts_ls), which reformats
+      -- using its own style instead of the project's .prettierrc.
+      local disable_filetypes = {
+        c = true,
+        cpp = true,
+        javascript = true,
+        javascriptreact = true,
+        typescript = true,
+        typescriptreact = true,
+        json = true,
+        html = true,
+        css = true,
+      }
       return {
-        timeout_ms = 500,
+        timeout_ms = 2000,
         lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
       }
     end,
