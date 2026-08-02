@@ -2,7 +2,7 @@
 local M = {
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
-  branch = '0.1.x',
+  version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',
     { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -49,12 +49,17 @@ local M = {
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
       --
-      -- defaults = {
-      --   mappings = {
-      --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-      --   },
-      -- },
-      -- pickers = {}
+      defaults = {
+        -- Without this, the preview window's border is stuck showing "Grep
+        -- Preview" for every picker (find_files included), since telescope
+        -- reuse its grep previewer's static title elsewhere too.
+        dynamic_preview_title = true,
+      },
+      pickers = {
+        find_files = {
+          theme = 'dropdown',
+        }
+      },
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
@@ -78,7 +83,6 @@ local M = {
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = 'Search Resume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = 'Search Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'Search Buffers' })
-    vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'Search Buffers' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
