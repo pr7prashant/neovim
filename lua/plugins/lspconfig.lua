@@ -11,9 +11,18 @@ local M = {
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { 'j-hui/fidget.nvim', opts = {} },
 
-    -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
+    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
-    { 'folke/neodev.nvim', opts = {} },
+    {
+      'folke/lazydev.nvim',
+      ft = 'lua', -- only load on lua files
+      opts = {
+        library = {
+          -- Load luvit types when the `vim.uv` word is found
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        },
+      },
+    },
   },
   config = function()
     -- Brief aside: **What is LSP?**
@@ -92,7 +101,9 @@ local M = {
 
         -- Opens a popup that displays documentation about the word under your cursor
         --  See `:help K` for why this keymap.
-        map('K', vim.lsp.buf.hover, 'Hover Documentation')
+        map('K', function()
+          vim.lsp.buf.hover { border = 'rounded' }
+        end, 'Hover Documentation')
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header.
@@ -192,8 +203,8 @@ local M = {
       -- Some languages (like typescript) have entire language plugins that can be useful:
       --    https://github.com/pmizio/typescript-tools.nvim
       --
-      -- But for many setups, the LSP (`tsserver`) will work just fine
-      tsserver = {},
+      -- But for many setups, the LSP (`ts_ls`) will work just fine
+      ts_ls = {},
 
       lua_ls = {
         -- cmd = {...},
@@ -227,17 +238,21 @@ local M = {
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+    -- mason-lspconfig no longer takes a `handlers` table (that API is gone as
+    -- of Neovim 0.11+'s native vim.lsp.config()/vim.lsp.enable()). Instead,
+    -- register capabilities/settings per server via vim.lsp.config(), then let
+    -- mason-lspconfig auto-enable whatever mason has installed.
+    vim.lsp.config('*', { capabilities = capabilities })
+    for server_name, server_opts in pairs(servers) do
+      vim.lsp.config(server_name, server_opts)
+    end
+
     require('mason-lspconfig').setup {
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          -- This handles overriding only values explicitly passed
-          -- by the server configuration above. Useful when disabling
-          -- certain features of an LSP (for example, turning off formatting for tsserver)
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          require('lspconfig')[server_name].setup(server)
-        end,
-      },
+      -- `stylua` is a formatter, not a language server, but nvim-lspconfig now
+      -- ships an `lsp/stylua.lua` config (it supports a `--lsp` mode) and
+      -- automatic_enable doesn't distinguish: it tries to start every
+      -- installed mason package that has a matching LSP config. Exclude it.
+      automatic_enable = { exclude = { 'stylua' } }
     }
   end,
 }
