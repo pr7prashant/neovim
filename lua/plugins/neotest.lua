@@ -38,7 +38,7 @@ local M = {
           -- Run from the nearest package.json directory so jest's `<rootDir>`
           -- (and moduleMapper, setup files etc.) resolve correctly.
           cwd = function(file)
-            return require('neotest.lib').files.match_root_pattern 'package.json' (file) or vim.fn.getcwd()
+            return require('neotest.lib').files.match_root_pattern 'package.json'(file) or vim.fn.getcwd()
           end,
         },
       },

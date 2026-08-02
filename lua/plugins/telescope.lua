@@ -58,7 +58,7 @@ local M = {
       pickers = {
         find_files = {
           theme = 'dropdown',
-        }
+        },
       },
       extensions = {
         ['ui-select'] = {

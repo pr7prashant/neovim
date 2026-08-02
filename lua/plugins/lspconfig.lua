@@ -19,7 +19,7 @@ local M = {
       opts = {
         library = {
           -- Load luvit types when the `vim.uv` word is found
-          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
         },
       },
     },
@@ -252,7 +252,7 @@ local M = {
       -- ships an `lsp/stylua.lua` config (it supports a `--lsp` mode) and
       -- automatic_enable doesn't distinguish: it tries to start every
       -- installed mason package that has a matching LSP config. Exclude it.
-      automatic_enable = { exclude = { 'stylua' } }
+      automatic_enable = { exclude = { 'stylua' } },
     }
   end,
 }

@@ -71,27 +71,27 @@ vim.keymap.set('n', '<leader>gg', '<cmd>lua _LAZYGIT_TOGGLE()<CR>', { desc = 'La
 
 -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
 vim.keymap.set('n', 'zR', function()
-    require('ufo').openAllFolds()
+  require('ufo').openAllFolds()
 end)
 vim.keymap.set('n', 'zM', function()
-    require('ufo').closeAllFolds()
+  require('ufo').closeAllFolds()
 end)
 
 -- Find and Replace (GrugFar)
 vim.keymap.set('n', '<leader>f', ':GrugFar<CR>', { desc = 'Open Find and Replace' })
 vim.keymap.set('v', '<leader>f', function()
-    local grug_far = require 'grug-far'
-    local lines = grug_far.get_current_visual_selection_lines() or {}
-    local flags = '--fixed-strings'
+  local grug_far = require 'grug-far'
+  local lines = grug_far.get_current_visual_selection_lines() or {}
+  local flags = '--fixed-strings'
 
-    if #lines > 1 then
-        flags = flags .. ' --multiline'
-    end
-    
-    grug_far.open {
-        prefills = {
-            search = table.concat(lines, '\n'),
-            flags = flags,
-        },
-    }
+  if #lines > 1 then
+    flags = flags .. ' --multiline'
+  end
+
+  grug_far.open {
+    prefills = {
+      search = table.concat(lines, '\n'),
+      flags = flags,
+    },
+  }
 end, { desc = 'Open Find & Replace (prefill)' })
