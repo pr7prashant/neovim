@@ -6,7 +6,7 @@ This repo is my personal neovim config. The latest config that I use corresponds
 
 Now this config uses `lazy.nvim` as a plugin manager, so if you are migrating from packer you should probably remove `$HOME/.local/share/nvim` and re-open nvim to re-install the plugins to not face any issues.
 
-## Install Neovim 0.10
+## Install Neovim 0.12
 
 You can install Neovim with your package manager e.g. brew, apt, pacman etc.. but remember that when you update your packages Neovim may be upgraded to a newer version.
 
@@ -17,7 +17,7 @@ If you would like to make sure Neovim only updates when you want it to than I re
 ```sh
 git clone https://github.com/neovim/neovim.git
 cd neovim
-git checkout release-0.10
+git checkout release-0.12
 make CMAKE_BUILD_TYPE=Release
 sudo make install
 ```
@@ -83,29 +83,7 @@ We will also need `ripgrep` for Telescope to work:
 
 Install Lazygit
 
-- Ubuntu
-
-```sh
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep '"tag_name":' |  sed -E 's/.*"v*([^"]+)".*/\1/')
-```
-
-```sh
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-```
-
-```sh
-sudo tar xf lazygit.tar.gz -C /usr/local/bin lazygit
-```
-
-```sh
-lazygit --version
-```
-
-- Mac (Homebrew)
-
-```
-brew install jesseduffield/lazygit/lazygit
-```
+- [Lazygit installation](https://github.com/jesseduffield/lazygit#installation)
 
 ---
 
@@ -149,18 +127,24 @@ Here is the wiki for installing new plugins refer to this: [wiki](https://github
 
 ## Plugins
 
-- [Comment.nvim](https://github.com/numToStr/Comment.nvim) - Smart and Powerful commenting plugin for Neovim.
 - [conform.nvim](https://github.com/stevearc/conform.nvim) - Lightweight yet powerful formatter plugin for Neovim.
+- [copilot.vim](https://github.com/github/copilot.vim) - Neovim plugin for Github Copilot AI code.
+- [fidget.nvim](https://github.com/j-hui/fidget.nvim) - Extensible UI for Neovim notifications and LSP progress messages.
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Super fast git decorations implemented purely in lua/teal.
 - [grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim) - Find and Replace plugin for neovim.
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) - This plugin adds indentation guides to all lines (including empty lines).
 - [lazy](https://github.com/folke/lazy.nvim) - lazy.nvim is a modern plugin manager for Neovim.
+- [lazydev.nvim](https://github.com/folke/lazydev.nvim) - Faster LuaLS setup for Neovim config, runtime and plugin development (completion, annotations and signatures of Neovim APIs).
+- [mason.nvim](https://github.com/mason-org/mason.nvim) - Portable package manager for Neovim to install LSP servers, DAP servers, linters, and formatters.
+- [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) - Bridges mason.nvim with nvim-lspconfig.
+- [mason-tool-installer.nvim](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) - Installs and upgrades registered mason packages automatically.
 - [mini.nvim](https://github.com/echasnovski/mini.nvim) - Library of 40+ independent Lua modules improving overall Neovim experience with minimal effort.
 - [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) - A Neovim plugin to browse the file system and other tree like structures in whatever style suits you.
+- [neotest](https://github.com/nvim-neotest/neotest) - An extensible framework for interacting with tests within Neovim.
+- [neotest-jest](https://github.com/nvim-neotest/neotest-jest) - Jest adapter for the neotest framework.
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs) - A super powerful autopair plugin for Neovim that supports multiple characters.
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion engine plugin for neovim written in Lua.
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - Configs for the Nvim LSP client.
-- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) - A File Explorer For Neovim Written In Lua.
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Uses `tree-sitter` interface in Neovim to provide syntax highlighting.
 - [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context) - A plugin that shows the context of the currently visible buffer contents.
 - [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) - The goal of nvim-ufo is to make Neovim's fold look modern and keep high performance.
@@ -173,11 +157,6 @@ Here is the wiki for installing new plugins refer to this: [wiki](https://github
 - [which-key](https://github.com/folke/which-key.nvim) - A lua plugin that displays a popup with possible key bindings of the command you started typing.
 
 ---
-
-## Referrences
-
-- kickstart.nvim : https://github.com/nvim-lua/kickstart.nvim
-- chris@machine : https://github.com/LunarVim/nvim-basic-ide
 
 > The computing scientist's main challenge is not to get confused by the complexities of his own making.
 
