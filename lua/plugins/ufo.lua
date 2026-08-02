@@ -1,18 +1,22 @@
--- Tell the server the capability of foldingRange,
--- Neovim hasn't added foldingRange to default capabilities, users must add it manually
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
+local M = {
+  'kevinhwang91/nvim-ufo',
+  dependencies = { 'kevinhwang91/promise-async' },
+  event = 'BufReadPost',
+  opts = {
+    -- Fold using treesitter (rich, language-aware folds) with an indent based
+    -- fallback for buffers that have no parser.
+    --
+    -- NOTE: We deliberately don't use ufo's 'lsp' provider here. It needs the
+    -- `foldingRange` capability registered *before*  the language server starts,
+    -- but ufo lazy-loads after lspconfig has already started its servers, so LSP
+    -- folds would silently never appear. Treesitter avoids that ordering trap.
+    provider_selector = function(_, _, _)
+      return { 'treesitter', 'indent' }
+    end,
+  },
+  config = function(_, opts)
+    require('ufo').setup(opts)
+  end,
 }
-local language_servers = require('lspconfig').util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
-for _, ls in ipairs(language_servers) do
-  require('lspconfig')[ls].setup {
-    capabilities = capabilities,
-    -- you can add other fields for setting up lsp server in this table
-  }
-end
-
-local M = { 'kevinhwang91/nvim-ufo', dependencies = { 'kevinhwang91/promise-async' }, opts = {} }
 
 return M
